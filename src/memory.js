@@ -2,27 +2,24 @@ import {h} from '@cycle/dom';
 import Rx from 'rx';
 
 import deck from './deck';
-import Card from './card';
+import Cards from './card';
 
 function view(DOM) {
 
-  let deck$ = Rx.Observable.of(deck(4))
-    .map(cards => cards.map(card => {
-      return Card({DOM, card$: Rx.Observable.of(card)}).DOM;
-    }));
+  let cards$ = Rx.Observable.of(deck(4))
 
-  // let deck$ = Rx.Observable.of(deck())
-  //   .map(cards => cards.map(card => h('div', card.face)));
-
-  // let deck$ = Rx.Observable.of(h('div', 'hello'));
-
-  // let pick$ = DOM
-  //   .select('.card')
-  //   .events('click')
-  //   .map(e => e.target)
-  //   // .map() // get card data
-  //   .bufferWithCount(2);
-  return deck$.map(cards => h('div.cards', cards));
+  return Cards(DOM
+    .select('.card')
+    .events('click')
+    .map(e => e.currentTarget.getAttribute('data-id'))
+    .do(c => console.log('card:', c))
+    .startWith(null)
+    .combineLatest(cards$, (id, cards) => {
+      cards.forEach(card => {
+        card.shown = (card.id === id);
+      });
+      return cards;
+    })).DOM;
 }
 
 export default function memory({DOM}) {

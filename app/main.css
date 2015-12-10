@@ -23,8 +23,8 @@ body {
     transform-style: preserve-3d;
     width: 70px;
     height: 100px; }
-  .card-slot:hover .card {
-    transform: rotateY(180deg); }
+    .card-slot .card.shown {
+      transform: rotateY(180deg); }
 
 .front, .back {
   cursor: pointer;

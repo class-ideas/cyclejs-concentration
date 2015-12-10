@@ -28,10 +28,10 @@ body {
     transform-style: preserve-3d;
     width: 70px;
     height: 100px;
-  }
 
-  &:hover .card {
-    transform: rotateY(180deg);
+    &.shown {
+      transform: rotateY(180deg);
+    }
   }
 }
 
