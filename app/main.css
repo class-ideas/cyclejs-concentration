@@ -1,0 +1,95 @@
+@charset "UTF-8";
+
+* {
+  font-family: Roboto, sans-serif;
+}
+
+body {
+  background: #355e3b;
+}
+
+.cards {
+  width: 884px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #456e4b;
+  margin: 20px auto;
+}
+
+.card {
+  cursor: pointer;
+  display: inline-block;
+  padding: 4px;
+  border: 1px solid #052e0b;
+  box-shadow: 0px 0px 4px#153e1b;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 34px;
+  line-height: 80px;
+  position: relative;
+  margin: 4px;
+  background: white;
+}
+
+.card:hover {
+  border-color: #3399FF;
+}
+.card:hover span {
+  box-shadow: 0px 0px 35px #3399FF inset;
+}
+
+/* animation stuff start */
+.card {
+  transition: 0.3s;
+  transform-style: preserve-3d;
+}
+.card:hover {
+  transform: rotateY(90deg);
+}
+.card .front, .card .back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* animation stuff end */
+
+.card:after, .card:before {
+  font-size: 0.6em;
+  line-height: 1em;
+  position: absolute;
+}
+
+.card:after {
+  bottom: 6px;
+  right: 6px;
+}
+.card:before {
+  top: 6px;
+  left: 6px;
+}
+
+.spade:after,   .spade:before   { content: '♠'; }
+.club:after,    .club:before    { content: '♣'; }
+.diamond:after, .diamond:before { content: '♦'; }
+.heart:after,   .heart:before   { content: '♥'; }
+
+.spade, .club { color: black; }
+.diamond, .heart { color: red; }
+
+.card span {
+  background: #f0f0f0;
+  width: 50px;
+  height: 80px;
+  border-radius: 4px;
+  display: block;
+}
+
+.card.back:before, .card.back:after {
+  content: none;
+}
+
+.card.back span {
+  color: transparent;
+  background: #ccc;
+}
