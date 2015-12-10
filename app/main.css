@@ -8,88 +8,102 @@ body {
   background: #355e3b;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .cards {
-  width: 884px;
+  width: 932px;
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #456e4b;
   margin: 20px auto;
 }
 
-.card {
-  cursor: pointer;
+.card-slot {
+  width: 70px;
+  height: 100px;
+  position: relative;
   display: inline-block;
-  padding: 4px;
+}
+
+.front, .back {
+  cursor: pointer;
   border: 1px solid #052e0b;
   box-shadow: 0px 0px 4px#153e1b;
   border-radius: 4px;
   text-align: center;
   font-size: 34px;
-  line-height: 80px;
-  position: relative;
   margin: 4px;
   background: white;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  backface-visibility: hidden;
+  position: absolute;
 }
 
-.card:hover {
+.back:hover {
   border-color: #3399FF;
 }
-.card:hover span {
+.back:hover .content {
   box-shadow: 0px 0px 35px #3399FF inset;
 }
 
-/* animation stuff start */
 .card {
-  transition: 0.3s;
+  transition: 0.6s;
   transform-style: preserve-3d;
+  width: 70px;
+  height: 100px;
 }
-.card:hover {
-  transform: rotateY(90deg);
+.card-slot:hover .card {
+  /*transform: rotateY(180deg);*/
 }
-.card .front, .card .back {
-  backface-visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-/* animation stuff end */
 
-.card:after, .card:before {
+.front:after, .front:before {
   font-size: 0.6em;
   line-height: 1em;
   position: absolute;
 }
 
-.card:after {
-  bottom: 6px;
-  right: 6px;
+.front:after {
+    bottom: 4px;
+    right: 7px;
 }
-.card:before {
-  top: 6px;
-  left: 6px;
+.front:before {
+    top: 4px;
+    left: 7px;
 }
 
-.spade:after,   .spade:before   { content: '♠'; }
-.club:after,    .club:before    { content: '♣'; }
-.diamond:after, .diamond:before { content: '♦'; }
-.heart:after,   .heart:before   { content: '♥'; }
+.spade .front:after,   .spade .front:before   { content: '♠'; }
+.club .front:after,    .club .front:before    { content: '♣'; }
+.diamond .front:after, .diamond .front:before { content: '♦'; }
+.heart .front:after,   .heart .front:before   { content: '♥'; }
 
 .spade, .club { color: black; }
 .diamond, .heart { color: red; }
 
-.card span {
-  background: #f0f0f0;
-  width: 50px;
-  height: 80px;
+.content {
   border-radius: 4px;
-  display: block;
+  margin: 4px;
+  line-height: 2.44em;
+  height: 2.44em;
 }
 
-.card.back:before, .card.back:after {
-  content: none;
+.back {
+  transform: rotateY(0deg);
+}
+.front {
+  transform: rotateY(180deg);
 }
 
-.card.back span {
-  color: transparent;
+.front .content {
+  background: #f0f0f0;
+}
+
+.back .content {
   background: #ccc;
 }

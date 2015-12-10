@@ -9,8 +9,21 @@ function view(DOM, card$) {
     .events('click');
 
   let vtree$ = card$.map(({suit, face, shown}) => {
-    let className = classes('card', suit, {back: false});
-    return h('div', {className}, h('span', face));
+    // let className = classes('card', suit, {back: false});
+    // return h('div', {className}, h('span', face));
+
+    return (
+      <div className="card-slot">
+        <div className={classes('card', suit)}>
+          <div className="back">
+            <div className="content"></div>
+          </div>
+          <div className="front">
+            <div className="content">{face}</div>
+          </div>
+        </div>
+      </div>
+    );
   });
 
   return {
