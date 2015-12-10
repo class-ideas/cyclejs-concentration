@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "node-sass scss/index.scss > app/main.css",
     "bundle": "browserify src/index.js -d -t [ babelify ] -o app/bundle.js"
   },
   "keywords": [],

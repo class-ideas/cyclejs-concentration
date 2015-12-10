@@ -1,109 +1,92 @@
 @charset "UTF-8";
-
 * {
   font-family: Roboto, sans-serif;
-}
+  box-sizing: border-box; }
 
 body {
-  background: #355e3b;
-}
-
-* {
-  box-sizing: border-box;
-}
+  background: #355e3b; }
 
 .cards {
   width: 932px;
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #456e4b;
-  margin: 20px auto;
-}
+  margin: 20px auto; }
 
 .card-slot {
   width: 70px;
   height: 100px;
   position: relative;
-  display: inline-block;
-}
+  display: inline-block; }
+  .card-slot .card {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    width: 70px;
+    height: 100px; }
+  .card-slot:hover .card {
+    transform: rotateY(180deg); }
 
 .front, .back {
   cursor: pointer;
   border: 1px solid #052e0b;
-  box-shadow: 0px 0px 4px#153e1b;
+  box-shadow: 0px 0px 4px #153e1b;
   border-radius: 4px;
   text-align: center;
   font-size: 34px;
   margin: 4px;
   background: white;
-
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-
   backface-visibility: hidden;
-  position: absolute;
-}
+  position: absolute; }
 
-.back:hover {
-  border-color: #3399FF;
-}
-.back:hover .content {
-  box-shadow: 0px 0px 35px #3399FF inset;
-}
+.back {
+  transform: rotateY(0deg); }
+  .back .content {
+    background: #ccc; }
+  .back:hover {
+    border-color: #3399FF; }
+    .back:hover .content {
+      box-shadow: 0px 0px 35px #3399FF inset; }
 
-.card {
-  transition: 0.6s;
-  transform-style: preserve-3d;
-  width: 70px;
-  height: 100px;
-}
-.card-slot:hover .card {
-  /*transform: rotateY(180deg);*/
-}
-
-.front:after, .front:before {
-  font-size: 0.6em;
-  line-height: 1em;
-  position: absolute;
-}
-
-.front:after {
-    bottom: 4px;
-    right: 7px;
-}
-.front:before {
+.front {
+  transform: rotateY(180deg); }
+  .front .content {
+    background: #f0f0f0; }
+  .front:after, .front:before {
+    font-size: 0.6em;
+    line-height: 1em;
+    position: absolute; }
+  .front:before {
     top: 4px;
-    left: 7px;
-}
+    left: 7px; }
+  .front:after {
+    bottom: 4px;
+    right: 7px; }
 
-.spade .front:after,   .spade .front:before   { content: '♠'; }
-.club .front:after,    .club .front:before    { content: '♣'; }
-.diamond .front:after, .diamond .front:before { content: '♦'; }
-.heart .front:after,   .heart .front:before   { content: '♥'; }
+.spade .front:before, .spade .front:after {
+  content: '♠'; }
 
-.spade, .club { color: black; }
-.diamond, .heart { color: red; }
+.club .front:before, .club .front:after {
+  content: '♣'; }
+
+.diamond .front:before, .diamond .front:after {
+  content: '♦'; }
+
+.heart .front:before, .heart .front:after {
+  content: '♥'; }
+
+.spade, .club {
+  color: black; }
+
+.diamond, .heart {
+  color: red; }
 
 .content {
   border-radius: 4px;
   margin: 4px;
   line-height: 2.44em;
-  height: 2.44em;
-}
+  height: 2.44em; }
 
-.back {
-  transform: rotateY(0deg);
-}
-.front {
-  transform: rotateY(180deg);
-}
-
-.front .content {
-  background: #f0f0f0;
-}
-
-.back .content {
-  background: #ccc;
-}
