@@ -2,7 +2,7 @@ import {h} from '@cycle/dom';
 import Rx from 'rx';
 
 import deck from './deck';
-import Cards from './card';
+import Cards from './cards';
 
 function view(DOM) {
 
