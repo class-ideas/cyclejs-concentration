@@ -5,9 +5,10 @@ import classes from 'classnames';
 
 function view(cards$) {
 
-  let card = ({suit, face, shown, id}) => (
+  let card = ({suit, face, shown, match, id}) => (
     <div className="card-slot">
-      <div className={classes('card', suit, {shown})} attributes={{'data-id':id}}>
+      <div className={classes('card', suit, {shown, match})} 
+        attributes={{'data-id':id, 'data-suit':suit, 'data-face':face}}>
         <div className="back">
           <div className="content"></div>
         </div>

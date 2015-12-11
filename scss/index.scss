@@ -29,8 +29,12 @@ body {
     width: 70px;
     height: 100px;
 
-    &.shown {
+    &.shown, &.match {
       transform: rotateY(180deg);
+    }
+
+    &.match {
+      opacity: 0;
     }
   }
 }
