@@ -1,10 +1,10 @@
 import Cycle from '@cycle/core';
 import {makeDOMDriver} from '@cycle/dom';
 
-import memory from './memory';
+import main from './components/main';
 
 let drivers = {
   DOM: makeDOMDriver('.app')
 };
 
-Cycle.run(memory, drivers);
+Cycle.run(main, drivers);

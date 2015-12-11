@@ -26,7 +26,7 @@ function view(state$) {
   return state$.map(layout);
 }
 
-export default function memory({DOM}) {
+export default function main({DOM}) {
   return {
     DOM: view(model(DOM))
   };

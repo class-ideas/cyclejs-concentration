@@ -3,7 +3,7 @@
 import {h, hJSX} from '@cycle/dom';
 import Rx from 'rx';
 import classes from 'classnames';
-import deck from './deck';
+import deck from '../deck';
 
 function intent(DOM) {
   return {
