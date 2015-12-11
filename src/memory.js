@@ -34,19 +34,21 @@ function view(DOM) {
       a.face === b.face && a.suit === b.suit
     ))
     .flatMap(m => Rx.Observable.of(m).delay(1000))
-    .startWith([{}, {}])
-    .do(([a, b]) => console.log('MATCH!', a, b));
+    .do(([a, b]) => console.log('MATCH!', a, b))
+    .scan((set, [a, b]) => {
+      set.add(a.id);
+      set.add(b.id);
+      return set;
+    }, new Set())
+    .startWith(new Set())
+    .do(m => console.log('matches:', m))
 
   return Cards(
     pairs$
-      .combineLatest(matches$, cards$, ([a, b], [x, y], cards,) => {
+      .combineLatest(matches$, cards$, ([a, b], matches, cards,) => {
         cards.forEach(card => {
           card.shown = (card.id === a.id || card.id === b.id);
-          if (!card.match) {
-            // todo keep a list of all matches
-            // so we do not need this !match check
-            card.match = (card.id === x.id || card.id === y.id);
-          }
+          card.match = matches.has(card.id);
         });
         return cards;
       })
