@@ -29,12 +29,19 @@ body {
     width: 70px;
     height: 100px;
 
+    &.shown {
+    }
+
     &.shown, &.match {
       transform: rotateY(180deg);
     }
 
     &.match {
-      opacity: 0;
+      .front {
+        transition: 0.5s;
+        transition-delay: 1s;
+        opacity: 0;
+      }
     }
   }
 }

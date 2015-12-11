@@ -33,7 +33,6 @@ function view(DOM) {
     .filter(([a, b]) => (
       a.face === b.face && a.suit === b.suit
     ))
-    .flatMap(m => Rx.Observable.of(m).delay(1000))
     .do(([a, b]) => console.log('MATCH!', a, b))
     .scan((set, [a, b]) => {
       set.add(a.id);
@@ -45,7 +44,8 @@ function view(DOM) {
 
   return Cards(
     pairs$
-      .combineLatest(matches$, cards$, ([a, b], matches, cards,) => {
+      .combineLatest(matches$, cards$, 
+        ([a, b], matches, cards) => {
         cards.forEach(card => {
           card.shown = (card.id === a.id || card.id === b.id);
           card.match = matches.has(card.id);

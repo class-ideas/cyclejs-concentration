@@ -25,7 +25,9 @@ body {
     height: 100px; }
     .card-slot .card.shown, .card-slot .card.match {
       transform: rotateY(180deg); }
-    .card-slot .card.match {
+    .card-slot .card.match .front {
+      transition: 0.5s;
+      transition-delay: 1s;
       opacity: 0; }
 
 .front, .back {
