@@ -28,7 +28,12 @@ body {
     .card-slot .card.match .front {
       transition: 0.5s;
       transition-delay: 1s;
-      opacity: 0; }
+      opacity: 0;
+      top: -10px;
+      bottom: -10px;
+      left: -10px;
+      right: -10px;
+      font-size: 2.62em; }
 
 .front, .back {
   cursor: pointer;
