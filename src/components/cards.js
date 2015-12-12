@@ -19,10 +19,10 @@ function intent(DOM) {
   }
 }
 
-function model(actions, {suits$}) {
+function model({flip$, suits$}) {
   let cards$ = suits$.map(n => deck(n));
 
-  let [odd$, even$] = actions.flip$
+  let [odd$, even$] = flip$
     .partition((card, index) => index % 2 === 0)
   
   let oddPairs$ = odd$.map(odd => [odd, {}]);
@@ -32,6 +32,10 @@ function model(actions, {suits$}) {
   let pairs$ = Rx.Observable
     .merge(oddPairs$, evenPairs$)
     .startWith([{}, {}]);
+
+  let moves$ = evenPairs$
+    .scan((n) => ++n, 0)
+    .startWith(0);
 
   let matches$ = evenPairs$
     .filter(([a, b]) => (
@@ -46,7 +50,7 @@ function model(actions, {suits$}) {
     .startWith(new Set())
     .do(m => console.log('matches:', m))
 
-  return pairs$
+  let state$ = pairs$
     .combineLatest(matches$, cards$, 
       ([a, b], matches, cards) => {
         cards.forEach(card => {
@@ -56,6 +60,12 @@ function model(actions, {suits$}) {
         return cards;
       }
     );
+
+  return {
+    state$,
+    moves$,
+    matches$
+  }
 }
 
 function view(state$) {
@@ -74,21 +84,23 @@ function view(state$) {
     </div>
   );
 
-  let vtree$ = state$.map(cards => (
+  return state$.map(cards => (
     <div className="cards">{cards.map(card)}</div>
   ));
-
-  return {
-    vtree$
-  }
 }
 
 export default function cards({DOM, suits$}) {
 
-  let {vtree$} = view(model(intent(DOM), {suits$}));
+  let {flip$} = intent(DOM);
+
+  let {state$, moves$, matches$} = model({flip$, suits$});
+
+  let vtree$ = view(state$);
 
   return {
-    vtree$
+    vtree$,
+    moves$,
+    matches$
   };
 
 }
