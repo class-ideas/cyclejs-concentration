@@ -1,6 +1,6 @@
 /** @jsx hJSX */
 
-import {h, hJSX} from '@cycle/dom';
+import {hJSX} from '@cycle/dom';
 import Rx from 'rx';
 
 function model({matches$, suits$, moves$}) {

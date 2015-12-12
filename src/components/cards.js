@@ -1,6 +1,6 @@
 /** @jsx hJSX */
 
-import {h, hJSX} from '@cycle/dom';
+import {hJSX} from '@cycle/dom';
 import Rx from 'rx';
 import classes from 'classnames';
 import deck from '../deck';
