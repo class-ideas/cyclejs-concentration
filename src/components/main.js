@@ -6,8 +6,17 @@ import scenes from './scenes';
 function view(state$) {
   let layout = scene => (
     <div>
-      <h1>Memory</h1>
+      <h1>Concentration</h1>
       {scene}
+      <footer>
+        <div className="cycle">
+          <span>Made with</span>
+          {' '}
+          <img src="cyclejs_logo.svg"/>
+          {' '}
+          <strong>Cycle.js</strong>
+        </div>
+      </footer>
     </div>
   )
 

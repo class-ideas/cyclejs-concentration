@@ -1,12 +1,28 @@
 @charset "UTF-8";
 * {
-  font-family: Roboto, sans-serif;
   box-sizing: border-box; }
 
 body {
+  font-family: Merriweather, Roboto, sans-serif;
   background: #355e3b; }
 
+h1 {
+  color: #233d27;
+  text-shadow: 1px 1px 1px #477f4f;
+  font-size: 3em;
+  text-align: center;
+  text-transform: uppercase; }
+
+.cycle {
+  line-height: 30px;
+  color: #ACFD7C;
+  text-align: center; }
+  .cycle img {
+    height: 30px;
+    vertical-align: -9px; }
+
 .cards {
+  font-family: Roboto, sans-serif;
   width: 932px;
   padding: 10px;
   border-radius: 5px;
