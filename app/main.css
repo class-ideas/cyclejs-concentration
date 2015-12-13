@@ -1,29 +1,6 @@
 @charset "UTF-8";
-* {
-  box-sizing: border-box; }
-
-body {
-  font-family: Merriweather, Roboto, sans-serif;
-  background: #355e3b; }
-
-h1 {
-  color: #233d27;
-  text-shadow: 1px 1px 1px #477f4f;
-  font-size: 3em;
-  text-align: center;
-  text-transform: uppercase; }
-
-.cycle {
-  line-height: 30px;
-  color: #ACFD7C;
-  text-align: center; }
-  .cycle img {
-    height: 30px;
-    vertical-align: -9px; }
-
 .cards {
   font-family: Roboto, sans-serif;
-  width: 932px;
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #456e4b;
@@ -114,4 +91,48 @@ h1 {
   margin: 4px;
   line-height: 2.44em;
   height: 2.44em; }
+
+.cycle {
+  line-height: 30px;
+  color: #ACFD7C;
+  text-align: center; }
+  .cycle img {
+    height: 30px;
+    vertical-align: -9px; }
+
+.scoreboard {
+  background: #192d1c;
+  padding: 10px 20px;
+  border-radius: 5px; }
+
+.score-item {
+  display: inline-block;
+  margin-right: 20px; }
+
+.score-key {
+  color: #fb4948;
+  font-family: Roboto, sans-serif;
+  padding-right: 5px; }
+
+.score-val {
+  color: #fdb724;
+  font-family: Orbitron, sans-serif; }
+
+* {
+  box-sizing: border-box; }
+
+body {
+  font-family: Merriweather, Roboto, sans-serif;
+  background: #355e3b; }
+
+.main-container {
+  width: 932px;
+  margin: auto; }
+
+h1 {
+  color: #233d27;
+  text-shadow: 1px 1px 1px #477f4f;
+  font-size: 3em;
+  text-align: center;
+  text-transform: uppercase; }
 

@@ -1,0 +1,23 @@
+@import 'colors';
+
+.scoreboard {
+  background: darken($feltGreen, 15%);
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.score-item {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.score-key {
+  color: $redLight;
+  font-family: Roboto, sans-serif;
+  padding-right: 5px;
+}
+
+.score-val {
+  color: $yellowLight;
+  font-family: Orbitron, sans-serif;
+}

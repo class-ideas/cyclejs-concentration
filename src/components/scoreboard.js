@@ -19,13 +19,14 @@ function model({matches$, suits$, moves$}) {
 function view(state$) {
   let scoreboard = ({matched, total, moves}) => (
     <div className="scoreboard">
-      <dl>
-        <dt>Moves Made</dt>
-        <dd>{moves}</dd>
-
-        <dt>Matches Made</dt>
-        <dd>{matched} of {total}</dd>
-      </dl>
+      <div className="score-item">
+        <span className="score-key">Moves Made</span>
+        <span className="score-val">{moves}</span>
+      </div>
+      <div className="score-item">
+        <span className="score-key">Matches Made</span>
+        <span className="score-val">{matched} of {total}</span>
+      </div>
     </div>
   );
 

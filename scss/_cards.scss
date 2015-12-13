@@ -1,0 +1,124 @@
+.cards {
+  font-family: Roboto, sans-serif;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #456e4b;
+  margin: 20px auto;
+}
+
+.card-slot {
+  width: 70px;
+  height: 100px;
+  position: relative;
+  display: inline-block;
+
+  .card {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    width: 70px;
+    height: 100px;
+
+    &.shown {
+    }
+
+    &.shown, &.match {
+      transform: rotateY(180deg);
+    }
+
+    &.match {
+      .front {
+        transition: 0.5s;
+        transition-delay: 1s;
+        opacity: 0;
+
+        top: -10px;
+        bottom: -10px;
+        left: -10px;
+        right: -10px;
+        font-size: 2.62em;
+      }
+    }
+  }
+}
+
+.front, .back {
+  cursor: pointer;
+  border: 1px solid #052e0b;
+  box-shadow: 0px 0px 4px#153e1b;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 34px;
+  margin: 4px;
+  background: white;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  backface-visibility: hidden;
+  position: absolute;
+}
+
+.back {
+  transform: rotateY(0deg);
+
+  .content {
+    background: #ccc;
+  }
+  
+  &:hover {
+    border-color: #3399FF;
+    .content {
+      box-shadow: 0px 0px 35px #3399FF inset;
+    }
+  }
+}
+
+.front {
+  transform: rotateY(180deg);
+
+  .content {
+    background: #f0f0f0;
+  }
+
+  &:after, &:before {
+    font-size: 0.6em;
+    line-height: 1em;
+    position: absolute;
+  }
+
+  &:before {
+    top: 4px;
+    left: 7px;
+  }
+
+  &:after {
+    bottom: 4px;
+    right: 7px;
+  }
+
+}
+
+.spade .front {
+  &:before, &:after { content: '♠'; }
+}
+.club .front {
+  &:before, &:after { content: '♣'; }
+}
+.diamond .front {
+  &:before, &:after { content: '♦'; }
+}
+.heart .front {
+  &:before, &:after { content: '♥'; }
+}
+
+.spade, .club { color: black; }
+.diamond, .heart { color: red; }
+
+.content {
+  border-radius: 4px;
+  margin: 4px;
+  line-height: 2.44em;
+  height: 2.44em;
+}

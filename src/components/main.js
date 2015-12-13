@@ -5,7 +5,7 @@ import scenes from './scenes';
 
 function view(state$) {
   let layout = scene => (
-    <div>
+    <div className="main-container">
       <h1>Concentration</h1>
       {scene}
       <footer>
