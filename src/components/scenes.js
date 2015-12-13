@@ -11,7 +11,7 @@ function model(DOM) {
   let game = PreGame(DOM);
   let cards = Cards({DOM, suits$: game.suits$});
   let scoreboard = ScoreBoard(Object.assign({}, game, cards));
-  let gameover = GameOver(DOM);
+  let gameover = GameOver({DOM, stats$: scoreboard.stats$});
 
   let start$ = gameover
     .playAgain$

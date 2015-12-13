@@ -39,7 +39,10 @@ function view(state$) {
 }
 
 export default function scoreBoard(args) {
+  let stats$ = model(args);
+
   return {
-    vtree$: view(model(args))
+    vtree$: view(stats$),
+    stats$
   };
 }

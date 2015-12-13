@@ -11,18 +11,25 @@ function intent(DOM) {
   return playAgain$;
 }
 
-function view() {
-  return Rx.Observable.of(
-    <div>
-      <div>Game Over</div>
-      <button className="play-again">Play Again</button>
+function view(stats$) {
+  return stats$.map(({matched, moves}) => (
+    <div className="gameover">
+      <div className="gameover-item">
+        <div className="gameover-title">Sweet!</div>
+      </div>
+      <div className="gameover-item">
+        <div>You found all {matched} matches in only {moves} moves.</div>
+      </div>
+      <div className="gameover-item">
+        <button className="play-again">Play Again</button>
+      </div>
     </div>
-  );
+  ));
 }
 
-export default function gameover(DOM) {
+export default function gameover({DOM, stats$}) {
   return {
-    vtree$: view(),
+    vtree$: view(stats$),
     playAgain$: intent(DOM)
   };
 }

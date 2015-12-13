@@ -127,6 +127,16 @@
   color: #fdb724;
   font-family: Orbitron, sans-serif; }
 
+.gameover {
+  text-align: center;
+  color: #eaeaea; }
+
+.gameover-item {
+  margin: 20px; }
+
+.gameover-title {
+  font-size: 10em; }
+
 * {
   box-sizing: border-box; }
 
