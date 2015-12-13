@@ -43,8 +43,8 @@ function model({flip$, suits$}) {
     ))
     .do(([a, b]) => console.log('MATCH!', a, b))
     .scan((set, [a, b]) => {
-      set.add(a.id);
-      set.add(b.id);
+      a.id && set.add(a.id);
+      b.id && set.add(b.id);
       return set;
     }, new Set())
     .startWith(new Set())
