@@ -10,12 +10,14 @@ function intent(DOM) {
     .map(e => e.target.value)
     .startWith(1);
 
-  let newGame$ = DOM
+  let start$ = DOM
     .select('.start-new-game')
-    .events('click')
-    .withLatestFrom(suits$, (e, suits) => suits);
+    .events('click');
 
-  return newGame$;
+  return start$
+    .withLatestFrom(suits$, 
+      (e, suits) => suits
+    );
 }
 
 function view() {
@@ -24,11 +26,17 @@ function view() {
   );
 
   return Rx.Observable.of(
-    <div>
-      <select className="suit-count-select">
-        {[1,2,3,4].map(opt)}
-      </select>
-      <button className="start-new-game">Start</button>
+    <div className="pre-game-menu">
+      <div className="pre-game-menu-item">
+        <label>Choose Number of Suits</label>
+        {" "}
+        <select className="suit-count-select">
+          {[1,2,3,4].map(opt)}
+        </select>
+      </div>
+      <div className="pre-game-menu-item">
+        <button className="start-new-game">Start</button>
+      </div>
     </div>
   );
 }

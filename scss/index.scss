@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 @import 'colors';
+@import 'pregame';
 @import 'cards';
 @import 'footer';
 @import 'scoreboard';
@@ -25,6 +26,16 @@ h1 {
   font-size: 3em;
   text-align: center;
   text-transform: uppercase;
+}
+
+button {
+  font-size: 28px;
+  border-radius: 10px;
+  padding: 10px 50px;
+  color: #eaeaea;
+  background: lighten($feltGreen, 15%);
+  border: 1px solid lighten($feltGreen, 20%);
+  cursor: pointer;
 }
 
 

@@ -3,12 +3,12 @@
 import {hJSX} from '@cycle/dom';
 import Rx from 'rx';
 import Cards from './cards';
-import NewGame from './new_game';
+import PreGame from './pregame';
 import ScoreBoard from './scoreboard';
 import GameOver from './gameover';
 
 function model(DOM) {
-  let game = NewGame(DOM);
+  let game = PreGame(DOM);
   let cards = Cards({DOM, suits$: game.suits$});
   let scoreboard = ScoreBoard(Object.assign({}, game, cards));
   let gameover = GameOver(DOM);

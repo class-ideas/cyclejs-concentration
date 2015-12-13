@@ -1,4 +1,13 @@
 @charset "UTF-8";
+.pre-game-menu {
+  color: #eaeaea; }
+
+.pre-game-menu-item {
+  text-align: center;
+  margin: 20px; }
+  .pre-game-menu-item select {
+    font-size: 100px; }
+
 .cards {
   font-family: Roboto, sans-serif;
   padding: 10px;
@@ -135,4 +144,13 @@ h1 {
   font-size: 3em;
   text-align: center;
   text-transform: uppercase; }
+
+button {
+  font-size: 28px;
+  border-radius: 10px;
+  padding: 10px 50px;
+  color: #eaeaea;
+  background: #518f5a;
+  border: 1px solid #5a9f64;
+  cursor: pointer; }
 
