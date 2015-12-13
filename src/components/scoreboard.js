@@ -10,15 +10,20 @@ function model({matches$, suits$, moves$}) {
       return {
         matched: matches.size / 2,
         total: suits * 13,
-        moves
+        moves,
+        suits
       }
     }
   );
 }
 
 function view(state$) {
-  let scoreboard = ({matched, total, moves}) => (
+  let scoreboard = ({matched, total, moves, suits}) => (
     <div className="scoreboard">
+      <div className="score-item">
+        <span className="score-key">Suits</span>
+        <span className="score-val">{suits}</span>
+      </div>
       <div className="score-item">
         <span className="score-key">Moves Made</span>
         <span className="score-val">{moves}</span>
