@@ -18,7 +18,7 @@ function model(DOM) {
     .startWith(1)
     .combineLatest(
       game.vtree$, 
-      (x, menu) => menu
+      (x, vtree) => vtree
     );
 
   let play$ = game.suits$
@@ -34,7 +34,7 @@ function model(DOM) {
   let end$ = cards.clear$
     .withLatestFrom(
       gameover.vtree$, 
-      (x, credits) => credits
+      (x, vtree) => vtree
     );
 
   return {
@@ -46,9 +46,9 @@ function model(DOM) {
 
 function views({start$, play$, end$}) {
   let startScene$ = start$
-    .map(menu => (
+    .map(vtree => (
       <div>
-        {menu}
+        {vtree}
       </div>
     ));
 
@@ -61,9 +61,9 @@ function views({start$, play$, end$}) {
     ));
 
   let endScene$ = end$
-    .map(credits => (
+    .map(vtree => (
       <div>
-        {credits}
+        {vtree}
       </div>
     ));
 
