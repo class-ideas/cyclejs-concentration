@@ -12,7 +12,7 @@ function view(state$) {
         <div className="cycle">
           <span>Made with</span>
           {' '}
-          <img src="cyclejs_logo.svg"/>
+          <img src="assets/cyclejs_logo.svg"/>
           {' '}
           <strong>Cycle.js</strong>
         </div>

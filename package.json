@@ -1,12 +1,12 @@
 {
-  "name": "cycle-memory",
+  "name": "cycle-concentration",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "node-sass scss/index.scss > app/main.css",
-    "bundle": "browserify src/index.js -d -t [ babelify ] -o app/bundle.js"
+    "sass": "node-sass src/scss/index.scss > assets/main.css",
+    "bundle": "browserify src/js/index.js -d -t [ babelify ] -o assets/bundle.js"
   },
   "keywords": [],
   "author": "",
