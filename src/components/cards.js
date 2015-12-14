@@ -33,22 +33,34 @@ function model({flip$, suits$}) {
     .merge(oddPairs$, evenPairs$)
     .startWith([{}, {}]);
 
-  let moves$ = evenPairs$
-    .scan((n) => ++n, 0)
-    .startWith(0);
+  let moves$ = suits$.flatMapLatest(() => (
+    evenPairs$
+      .takeUntil(suits$)
+      .scan((n) => ++n, 0)
+      .startWith(0)
+  ))
 
-  let matches$ = evenPairs$
-    .filter(([a, b]) => (
-      a.face === b.face && a.suit === b.suit
-    ))
-    .do(([a, b]) => console.log('MATCH!', a, b))
-    .scan((set, [a, b]) => {
-      a.id && set.add(a.id);
-      b.id && set.add(b.id);
-      return set;
-    }, new Set())
-    .startWith(new Set())
-    .do(m => console.log('matches:', m))
+  let matches$ = suits$.flatMapLatest(() => (
+    evenPairs$
+      .takeUntil(suits$)
+      .filter(([a, b]) => (
+        a.face === b.face && a.suit === b.suit
+      ))
+      .scan((set, [a, b]) => {
+        a.id && set.add(a.id);
+        b.id && set.add(b.id);
+        return set;
+      }, new Set())
+      .startWith(new Set())
+  ));
+
+  let clear$ = matches$
+    .combineLatest(suits$, (matches, suits) => ({
+      matches, suits
+    }))
+    .filter(({matches, suits}) => {
+      return matches.size === (suits * 26)
+    });
 
   let state$ = pairs$
     .combineLatest(matches$, cards$, 
@@ -64,7 +76,8 @@ function model({flip$, suits$}) {
   return {
     state$,
     moves$,
-    matches$
+    matches$,
+    clear$
   }
 }
 
@@ -93,14 +106,15 @@ export default function cards({DOM, suits$}) {
 
   let {flip$} = intent(DOM);
 
-  let {state$, moves$, matches$} = model({flip$, suits$});
+  let {state$, moves$, matches$, clear$} = model({flip$, suits$});
 
   let vtree$ = view(state$);
 
   return {
     vtree$,
     moves$,
-    matches$
+    matches$,
+    clear$
   };
 
 }

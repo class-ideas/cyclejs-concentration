@@ -21,22 +21,19 @@ function model(DOM) {
       (x, menu) => menu
     );
 
-  let play$ = cards.vtree$
-    .combineLatest(scoreboard.vtree$, 
-      (cards, scoreboard) => {
-        return {cards, scoreboard};
-      }
+  let play$ = game.suits$
+    .combineLatest(
+      cards.vtree$, 
+      scoreboard.vtree$,
+      (suits, cards, scoreboard) => ({
+        cards,
+        scoreboard
+      })
     );
 
-  let end$ = game.suits$.combineLatest(cards.matches$, 
-    (suits, matches) => {
-      return {suits, matches};
-    })
-    .filter(({suits, matches}) => {
-      return matches.size === suits * 26;
-    })
-    .flatMap(x => Rx.Observable.of(x).delay(2000))
-    .combineLatest(gameover.vtree$, 
+  let end$ = cards.clear$
+    .withLatestFrom(
+      gameover.vtree$, 
       (x, credits) => credits
     );
 
